@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">CampusLife</string>
+    <string name="title_activity_main">CampusLife</string>
+    <string name="package_name">com.campuslife.app</string>
+    <string name="custom_url_scheme">com.campuslife.app</string>
+</resources>
