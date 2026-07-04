@@ -1,0 +1,118 @@
+{
+  "common": {
+    "appName": "CampusLife",
+    "appDesc": "校园生活一站式工作站",
+    "loading": "加载中...",
+    "noData": "暂无数据",
+    "confirm": "确定",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "add": "添加",
+    "search": "搜索",
+    "filter": "筛选",
+    "reset": "重置",
+    "submit": "提交",
+    "back": "返回",
+    "more": "更多",
+    "success": "操作成功",
+    "error": "操作失败",
+    "login": "登录",
+    "register": "注册",
+    "logout": "退出登录",
+    "profile": "个人资料",
+    "settings": "设置"
+  },
+  "nav": {
+    "assistant": "AI 助手",
+    "academics": "学业管理",
+    "campus": "校园信息",
+    "finance": "财务管理",
+    "lostFound": "失物招领",
+    "marketplace": "二手市场",
+    "qa": "问答广场",
+    "social": "社交通讯",
+    "health": "健康管理",
+    "volunteer": "志愿公益"
+  },
+  "academics": {
+    "schedule": "课程表",
+    "grades": "成绩追踪",
+    "assignments": "作业管理",
+    "exams": "考试安排",
+    "notes": "笔记",
+    "addCourse": "添加课程",
+    "courseName": "课程名",
+    "teacher": "教师",
+    "classroom": "教室",
+    "credits": "学分",
+    "semester": "学期",
+    "weekRange": "周次",
+    "gpa": "平均绩点",
+    "totalCredits": "总学分",
+    "avgScore": "平均分",
+    "priority": {
+      "low": "低",
+      "medium": "中",
+      "high": "高",
+      "urgent": "紧急"
+    },
+    "status": {
+      "pending": "待完成",
+      "inProgress": "进行中",
+      "done": "已完成"
+    }
+  },
+  "finance": {
+    "ledger": "记账本",
+    "income": "收入",
+    "expense": "支出",
+    "totalIncome": "总收入",
+    "totalExpense": "总支出",
+    "balance": "结余",
+    "category": "分类",
+    "amount": "金额",
+    "description": "描述",
+    "date": "日期",
+    "addTransaction": "记一笔",
+    "categories": {
+      "dining": "餐饮",
+      "transport": "交通",
+      "entertainment": "娱乐",
+      "study": "学习",
+      "shopping": "购物",
+      "social": "社交",
+      "medical": "医疗",
+      "other": "其他"
+    }
+  },
+  "health": {
+    "exercise": "运动记录",
+    "sleep": "作息管理",
+    "mood": "心情日记",
+    "duration": "时长",
+    "distance": "距离",
+    "steps": "步数",
+    "calories": "卡路里",
+    "quality": "质量",
+    "stressLevel": "压力",
+    "moods": {
+      "veryBad": "很差",
+      "bad": "较差",
+      "normal": "一般",
+      "good": "不错",
+      "veryGood": "很好"
+    }
+  },
+  "social": {
+    "forum": "论坛广场",
+    "clubs": "社团管理",
+    "contacts": "通讯录",
+    "messages": "消息",
+    "post": "发帖",
+    "comment": "评论",
+    "views": "浏览",
+    "likes": "点赞"
+  }
+}

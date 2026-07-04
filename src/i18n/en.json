@@ -1,0 +1,118 @@
+{
+  "common": {
+    "appName": "CampusLife",
+    "appDesc": "Campus Life One-Stop Station",
+    "loading": "Loading...",
+    "noData": "No Data",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "reset": "Reset",
+    "submit": "Submit",
+    "back": "Back",
+    "more": "More",
+    "success": "Success",
+    "error": "Error",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  "nav": {
+    "assistant": "AI Assistant",
+    "academics": "Academics",
+    "campus": "Campus Info",
+    "finance": "Finance",
+    "lostFound": "Lost & Found",
+    "marketplace": "Marketplace",
+    "qa": "Q&A Forum",
+    "social": "Social",
+    "health": "Health",
+    "volunteer": "Volunteer"
+  },
+  "academics": {
+    "schedule": "Schedule",
+    "grades": "Grades",
+    "assignments": "Assignments",
+    "exams": "Exams",
+    "notes": "Notes",
+    "addCourse": "Add Course",
+    "courseName": "Course Name",
+    "teacher": "Teacher",
+    "classroom": "Classroom",
+    "credits": "Credits",
+    "semester": "Semester",
+    "weekRange": "Week Range",
+    "gpa": "GPA",
+    "totalCredits": "Total Credits",
+    "avgScore": "Average Score",
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "urgent": "Urgent"
+    },
+    "status": {
+      "pending": "Pending",
+      "inProgress": "In Progress",
+      "done": "Done"
+    }
+  },
+  "finance": {
+    "ledger": "Ledger",
+    "income": "Income",
+    "expense": "Expense",
+    "totalIncome": "Total Income",
+    "totalExpense": "Total Expense",
+    "balance": "Balance",
+    "category": "Category",
+    "amount": "Amount",
+    "description": "Description",
+    "date": "Date",
+    "addTransaction": "Add Transaction",
+    "categories": {
+      "dining": "Dining",
+      "transport": "Transport",
+      "entertainment": "Entertainment",
+      "study": "Study",
+      "shopping": "Shopping",
+      "social": "Social",
+      "medical": "Medical",
+      "other": "Other"
+    }
+  },
+  "health": {
+    "exercise": "Exercise",
+    "sleep": "Sleep",
+    "mood": "Mood Diary",
+    "duration": "Duration",
+    "distance": "Distance",
+    "steps": "Steps",
+    "calories": "Calories",
+    "quality": "Quality",
+    "stressLevel": "Stress Level",
+    "moods": {
+      "veryBad": "Very Bad",
+      "bad": "Bad",
+      "normal": "Normal",
+      "good": "Good",
+      "veryGood": "Very Good"
+    }
+  },
+  "social": {
+    "forum": "Forum",
+    "clubs": "Clubs",
+    "contacts": "Contacts",
+    "messages": "Messages",
+    "post": "New Post",
+    "comment": "Comment",
+    "views": "Views",
+    "likes": "Likes"
+  }
+}
