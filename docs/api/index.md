@@ -1,6 +1,6 @@
 # API Reference
 
-Base URL: `http://localhost:8059/api/v1`
+Base URL: `http://localhost:8000/api/v1`
 
 ## Authentication
 

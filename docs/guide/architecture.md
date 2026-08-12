@@ -1,92 +1,92 @@
-# 系统架构
+# Architecture
 
-## 整体架构
+## Overview
 
-CampusLife 采用前后端分离架构，前端通过 HTTP/WebSocket 与后端通信。
+CampusLife uses a front-end / back-end separated architecture. The frontend communicates with the backend over HTTP / WebSocket.
 
 ```
-┌──────────────────────────────────────────────────────┐
-│                     客户端层                           │
-│  ┌──────────────┐  ┌──────────────┐  ┌────────────┐  │
-│  │  Web 前端     │  │  Tauri 桌面端 │  │ Android    │  │
-│  │  Vue 3 + EP   │  │  Rust + WV2  │  │ Capacitor  │  │
-│  └──────┬───────┘  └──────┬───────┘  └─────┬──────┘  │
-│         └─────────────────┼────────────────┘          │
-├───────────────────────────┼───────────────────────────┤
-│                           ▼                           │
-│              FastAPI 后端 (server/)                     │
-│  ┌─────────┐ ┌─────────┐ ┌──────────┐ ┌───────────┐  │
-│  │ Auth    │ │ API     │ │WebSocket │ │ AI Proxy  │  │
-│  │ (JWT)   │ │ (REST)  │ │(实时通知)│ │(OpenAI)   │  │
-│  └─────────┘ └─────────┘ └──────────┘ └───────────┘  │
-├───────────────────────────────────────────────────────┤
-│              数据层                                     │
-│  ┌────────────────┐  ┌──────────────────────────────┐ │
-│  │ SQLite / MySQL  │  │ 本地文件存储 (uploads/)       │ │
-│  └────────────────┘  └──────────────────────────────┘ │
-└───────────────────────────────────────────────────────┘
++----------------------------------------------------------+
+|                       Client Layer                       |
+|  +---------------+  +----------------+  +-------------+   |
+|  | Web Frontend  |  | Tauri Desktop  |  | Android    |   |
+|  | Vue 3 + EP    |  | Rust + WV2     |  | Capacitor  |   |
+|  +------+--------+  +-------+--------+  +-----+-------+   |
+|         +--------------------------+----------+          |
++------------------------------------+---------------------+
+                                     |
+                                     v
+                       FastAPI Backend (server/)
+  +---------+  +---------+  +-------------+  +-----------+
+  | Auth    |  | API     |  | WebSocket   |  | AI Proxy  |
+  | (JWT)   |  | (REST)  |  | (realtime)  |  | (OpenAI)  |
+  +---------+  +---------+  +-------------+  +-----------+
++----------------------------------------------------------+
+                     Data Layer
+  +------------------+   +-------------------------------+
+  | SQLite / MySQL   |   | Local file storage (uploads/) |
+  +------------------+   +-------------------------------+
 ```
 
-## 前端架构 (`src/`)
+## Frontend structure (`src/`)
 
 ```
 src/
-├── api/index.ts        # Axios 实例 + 所有 API 分组
-├── router/index.ts     # 路由表 (登录 + 10 个功能模块)
-├── stores/             # Pinia stores (12 个模块)
-├── views/              # 页面视图 (每模块一个文件夹)
-├── components/         # 可复用组件 (layout/, common/)
-├── composables/        # 重导出所有 stores
-├── types/index.ts      # TypeScript 类型定义
-├── utils/helpers.ts    # 工具函数
-├── i18n/               # 国际化 (zh-CN, en)
-├── mock/data.ts        # 前端模拟数据
-└── assets/styles/      # SCSS (tokens.scss, base.scss)
++-- api/index.ts          # Axios instance + all API groups
++-- router/index.ts       # Route table (login + 10 modules)
++-- stores/               # Pinia stores (composition style)
++-- views/                # Page views (one folder per module)
++-- components/           # Reusable components (layout/, common/)
++-- composables/          # Re-exports all stores
++-- types/index.ts        # TypeScript type definitions
++-- utils/helpers.ts      # Utility functions
++-- i18n/                 # Internationalization (zh-CN, en)
++-- mock/data.ts          # Frontend mock data
++-- assets/styles/        # SCSS (tokens.scss, base.scss)
 ```
 
-## 后端架构 (`server/`)
+## Backend structure (`server/`)
 
 ```
 server/
-├── app/
-│   ├── main.py         # FastAPI 入口 + 路由注册
-│   ├── database.py     # SQLAlchemy 引擎 + Session
-│   ├── core/           # 配置 (config.py), JWT (security.py)
-│   ├── models/         # SQLAlchemy 模型
-│   ├── schemas/        # Pydantic schemas
-│   ├── api/v1/         # API 路由 (auth/org/academics/campus/ai)
-│   └── services/       # 业务逻辑层
-├── tests/              # 后端测试
-├── pyproject.toml      # Python 依赖
-└── .env.example        # 环境变量模板
++-- app/
+|   +-- main.py           # FastAPI entry + route registration
+|   +-- database.py       # SQLAlchemy engine + Session
+|   +-- core/             # Config (config.py), JWT (security.py)
+|   +-- models/           # SQLAlchemy models
+|   +-- schemas/          # Pydantic schemas
+|   +-- api/v1/           # API routes (auth/org/academics/campus/ai)
+|   +-- services/         # Business logic layer
++-- tests/                # Backend tests
++-- pyproject.toml        # Python dependencies
++-- .env.example          # Environment variable template
 ```
 
-## 10 大功能模块
+## The 10 functional modules
 
-| # | 模块 | 路由路径 | 对应 Store |
-|---|------|---------|-----------|
-| 1 | AI 助手 | `/assistant` | `useAssistantStore` |
-| 2 | 学业管理 | `/academics` | `useAcademicsStore` |
-| 3 | 校园信息 | `/campus` | `useCampusStore` |
-| 4 | 财务管理 | `/finance` | `useFinanceStore` |
-| 5 | 失物招领 | `/lost-found` | `useLostFoundStore` |
-| 6 | 二手市场 | `/marketplace` | `useMarketplaceStore` |
-| 7 | 问答广场 | `/qa` | `useQAStore` |
-| 8 | 社交通讯 | `/social` | `useSocialStore` |
-| 9 | 健康管理 | `/health` | `useHealthStore` |
-| 10 | 志愿公益 | `/volunteer` | `useVolunteerStore` |
+| # | Module | Route | Store |
+|---|--------|-------|-------|
+| 1 | AI Assistant | /assistant | useAssistantStore |
+| 2 | Academics | /academics | useAcademicsStore |
+| 3 | Campus Life | /campus | useCampusStore |
+| 4 | Finance | /finance | useFinanceStore |
+| 5 | Lost & Found | /lost-found | useLostFoundStore |
+| 6 | Marketplace | /marketplace | useMarketplaceStore |
+| 7 | Q&A Plaza | /qa | useQAStore |
+| 8 | Social | /social | useSocialStore |
+| 9 | Health | /health | useHealthStore |
+| 10 | Volunteer | /volunteer | useVolunteerStore |
 
-## 认证流程
+## Authentication flow
 
 ```
-登录 → 服务端返回 JWT Token
-     → 前端存储到 localStorage('campuslife-token')
-     → 每次请求通过 Authorization: Bearer <token> 发送
-     → 401 响应 → 清除 token → 重定向 /login
+Login -> Server returns a JWT token
+     -> Frontend stores it in localStorage('campuslife-token')
+     -> Every request sends it via Authorization: Bearer <token>
+     -> On 401 -> Clear token -> Redirect to /login
 ```
 
-## 数据同步策略
+## Data sync strategy
 
-- **上传数据** — 用户选择范围 (scope) → 对应层级管理员审核 → 通过后同步到该范围所有用户
-- **离线优先** — 本地缓存已同步数据，离线可读写，联网时双向同步
-- **冲突检测** — 基于 timestamp + version 字段，Last-Write-Wins 策略
+- **Uploading data** - The user picks a scope -> the matching-level admin reviews it -> on approval it syncs to all users in that scope.
+- **Offline-first** - Locally cached synced data; read/write works offline, bidirectional sync runs when online.
+- **Conflict resolution** - Based on timestamp + version fields, using a Last-Write-Wins policy.

@@ -10,7 +10,7 @@
 ### Quick Start
 
 ```bash
-git clone https://github.com/campuslife/campuslife.git
+git clone https://github.com/Maicarons/campuslife.git
 cd campuslife/deploy
 
 # Copy and edit environment file

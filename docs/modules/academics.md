@@ -1,79 +1,79 @@
-# 学业管理
+# Academics
 
-## 概览
+## Overview
 
-学业管理模块帮助学生管理课程表、成绩、作业、考试和笔记。
+The Academics module helps students manage their course schedule, grades, assignments, exams, and notes.
 
-## 子模块
+## Submodules
 
-### 📅 课程表
+### Course Schedule
 
-| 特性 | 说明 |
-|------|------|
-| **视图** | 周视图 / 日视图 |
-| **操作** | 拖拽排课、冲突检测 |
-| **同步范围** | 班级 / 专业 |
-| **AI** | 智能排课建议 |
-| **OCR** | ✅ 拍照导入课程表 |
-| **上传积分** | +10 |
+| Feature | Description |
+|---------|-------------|
+| View | Week / day view |
+| Actions | Drag-to-schedule, conflict detection |
+| Sync scope | Class / Major |
+| AI | Smart scheduling suggestions |
+| OCR | Yes - snap a photo to import the schedule |
+| Upload points | +10 |
 
-**字段：** 课程名、教师、学分、教室、星期几、节次、学期、周次范围、颜色
+Fields: course name, teacher, credits, classroom, weekday, period, semester, week range, color.
 
-### 📊 成绩追踪
+### Grade Tracking
 
-| 特性 | 说明 |
-|------|------|
-| **功能** | GPA 计算、趋势图表、学分统计 |
-| **同步范围** | 个人 |
-| **AI** | 成绩预测、学习建议 |
-| **OCR** | ✅ 截图导入成绩单 |
+| Feature | Description |
+|---------|-------------|
+| Features | GPA calculation, trend charts, credit statistics |
+| Sync scope | Personal |
+| AI | Grade prediction, study advice |
+| OCR | Yes - screenshot import of transcripts |
 
-**字段：** 课程名、分数、绩点、学分、学期、考试类型（期末/补考/重修）
+Fields: course name, score, grade point, credits, semester, exam type (final / makeup / retake).
 
-### 📝 作业管理
+### Assignment Management
 
-| 特性 | 说明 |
-|------|------|
-| **功能** | 截止日期提醒、优先级、附件 |
-| **同步范围** | 班级 |
-| **AI** | 解析作业要求、智能提醒 |
-| **OCR** | ✅ 拍照识别作业 |
+| Feature | Description |
+|---------|-------------|
+| Features | Due-date reminders, priority, attachments |
+| Sync scope | Class |
+| AI | Parse assignment requirements, smart reminders |
+| OCR | Yes - snap a photo to capture assignments |
 
-**字段：** 标题、描述、课程名、截止日期、优先级（low/medium/high/urgent）、状态
+Fields: title, description, course name, due date, priority (low / medium / high / urgent), status.
 
-### 📋 考试安排
+### Exam Schedule
 
-| 特性 | 说明 |
-|------|------|
-| **功能** | 考试日历、倒计时、复习计划 |
-| **同步范围** | 班级 / 专业 / 年级 |
-| **AI** | 生成个性化复习计划 |
-| **OCR** | ✅ 拍照导入考试通知 |
-| **上传积分** | +10 |
+| Feature | Description |
+|---------|-------------|
+| Features | Exam calendar, countdown, review plan |
+| Sync scope | Class / Major / Grade |
+| AI | Generate a personalized review plan |
+| OCR | Yes - snap a photo to import exam notices |
+| Upload points | +10 |
 
-**字段：** 课程名、考试类型、时间、地点、座位号、备注
+Fields: course name, exam type, time, location, seat number, note.
 
-### 📓 笔记系统
+### Notes System
 
-| 特性 | 说明 |
-|------|------|
-| **格式** | 富文本 + Markdown |
-| **功能** | 标签、搜索、公开/私密 |
-| **AI** | 笔记摘要、关键词提取 |
-| **OCR** | ✅ 图片转文字 |
+| Feature | Description |
+|---------|-------------|
+| Format | Rich text + Markdown |
+| Features | Tags, search, public / private |
+| AI | Note summary, keyword extraction |
+| OCR | Yes - image to text |
 
-### 🏫 空闲教室
+### Free Classrooms
 
-| 特性 | 说明 |
-|------|------|
-| **查询** | 按时间、教学楼筛选 |
-| **同步范围** | 学校 |
-| **上传积分** | +3 |
+| Feature | Description |
+|---------|-------------|
+| Query | Filter by time and building |
+| Sync scope | School |
+| Upload points | +3 |
 
-## 数据模型
+## Data model
 
 ```typescript
-// 课程
+// Course
 interface Course {
   id: string
   name: string
@@ -84,7 +84,7 @@ interface Course {
   start_period: number
   end_period: number
   semester: string
-  week_range: string    // "1-16周"
+  week_range: string    // "weeks 1-16"
   color: string
   shared: boolean
   scope_type: 'class' | 'major'
@@ -92,7 +92,7 @@ interface Course {
   status: 'pending' | 'approved' | 'rejected'
 }
 
-// 成绩
+// Grade
 interface GradeRecord {
   id: string
   course_name: string
@@ -105,20 +105,20 @@ interface GradeRecord {
 }
 ```
 
-## API 端点
+## API endpoints
 
-| 方法 | 路径 | 说明 |
-|------|------|------|
-| GET | `/api/v1/academics/courses` | 获取课程列表 |
-| POST | `/api/v1/academics/courses` | 创建课程（带 scope） |
-| PUT | `/api/v1/academics/courses/:id` | 更新课程 |
-| DELETE | `/api/v1/academics/courses/:id` | 删除课程 |
-| GET | `/api/v1/academics/grades` | 获取成绩列表 |
-| POST | `/api/v1/academics/grades` | 创建成绩记录 |
-| GET | `/api/v1/academics/assignments` | 获取作业列表 |
-| POST | `/api/v1/academics/assignments` | 创建作业 |
-| GET | `/api/v1/academics/exams` | 获取考试列表 |
-| POST | `/api/v1/academics/exams` | 创建考试安排 |
-| GET | `/api/v1/academics/notes` | 获取笔记列表 |
-| POST | `/api/v1/academics/notes` | 创建笔记 |
-| GET | `/api/v1/academics/classrooms/available` | 查询空闲教室 |
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | /api/v1/academics/courses | List courses |
+| POST | /api/v1/academics/courses | Create a course (with scope) |
+| PUT | /api/v1/academics/courses/:id | Update a course |
+| DELETE | /api/v1/academics/courses/:id | Delete a course |
+| GET | /api/v1/academics/grades | List grades |
+| POST | /api/v1/academics/grades | Create a grade record |
+| GET | /api/v1/academics/assignments | List assignments |
+| POST | /api/v1/academics/assignments | Create an assignment |
+| GET | /api/v1/academics/exams | List exams |
+| POST | /api/v1/academics/exams | Create an exam schedule |
+| GET | /api/v1/academics/notes | List notes |
+| POST | /api/v1/academics/notes | Create a note |
+| GET | /api/v1/academics/classrooms/available | Query free classrooms |

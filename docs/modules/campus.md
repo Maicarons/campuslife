@@ -1,105 +1,104 @@
-# 校园生活
+# Campus Life
 
-## 概览
+## Overview
 
-校园生活模块整合了食堂、外卖、失物招领、活动、地图、校车和公告等校园日常信息服务。
+The Campus Life module brings together everyday campus services: cafeteria menus, takeout, lost & found, events, maps, campus bus, and announcements.
 
-## 子模块
+## Submodules
 
-### 🍽️ 食堂菜单
+### Cafeteria Menu
 
-| 特性 | 说明 |
-|------|------|
-| **功能** | 各食堂菜品展示、营养分析、收藏 |
-| **同步范围** | 学校（全校共享） |
-| **AI** | 营养搭配建议 |
-| **OCR** | ✅ 拍照识别菜单 |
-| **上传积分** | +5 |
+| Feature | Description |
+|---------|-------------|
+| Features | Dish showcase per canteen, nutrition analysis, favorites |
+| Sync scope | School (shared campus-wide) |
+| AI | Nutrition pairing suggestions |
+| OCR | Yes - snap a photo to recognize the menu |
+| Upload points | +5 |
 
-**餐饮点类型：** 食堂 (cafeteria) / 外卖 (takeout) / 周边 (nearby)
+Dining-point types: cafeteria / takeout / nearby.
+Dish fields: name, price, original price (discount), category, description, nutrition, spiciness, popular.
 
-**菜品字段：** 名称、价格、原价（折扣）、分类、描述、营养信息、辣度、是否热门
+### Takeout Aggregation
 
-### 🛵 外卖聚合
+| Feature | Description |
+|---------|-------------|
+| Features | Aggregate on/off-campus takeout platforms, deals |
+| Sync scope | School |
+| AI | Personalized ordering recommendations |
+| Upload points | +3 |
 
-| 特性 | 说明 |
-|------|------|
-| **功能** | 校内外卖平台汇总、优惠信息 |
-| **同步范围** | 学校 |
-| **AI** | 个性化点餐推荐 |
-| **上传积分** | +3 |
+### Nearby Places
 
-### 🗺️ 校园周边
+| Feature | Description |
+|---------|-------------|
+| Features | Nearby dining / shops, ratings, average spend |
+| AI | Exploration recommendations |
 
-| 特性 | 说明 |
-|------|------|
-| **功能** | 校园周边餐饮/店铺、评分、人均消费 |
-| **AI** | 探店推荐 |
+### Dining Diary
 
-### 📔 餐饮日记
+| Feature | Description |
+|---------|-------------|
+| Features | Log each meal, nutrition stats, spend stats |
+| AI | Diet analysis and health advice |
+| OCR | Yes - snap a photo to log a meal |
 
-| 特性 | 说明 |
-|------|------|
-| **功能** | 每餐记录、营养统计、消费统计 |
-| **AI** | 饮食分析和健康建议 |
-| **OCR** | ✅ 拍照记录 |
+Fields: dining point, meal type (breakfast / lunch / dinner / snack), dishes, total price, photo, nutrition summary.
 
-**字段：** 餐饮点、餐次（早/中/晚/加餐）、菜品、总价、照片、营养摘要
+### Lost & Found
 
-### 🔍 失物招领
+| Feature | Description |
+|---------|-------------|
+| Features | Publish / search lost & found posts |
+| Sync scope | School |
+| AI | Image recognition to assist classification |
+| OCR | Yes - image recognition |
+| Upload points | +5 |
 
-| 特性 | 说明 |
-|------|------|
-| **功能** | 发布/搜索失物招领信息 |
-| **同步范围** | 学校 |
-| **AI** | 图像识别辅助分类 |
-| **OCR** | ✅ 图片识别 |
-| **上传积分** | +5 |
+Fields: type (lost / found), title, description, location, contact, category, status.
 
-**字段：** 类型(lost/found)、标题、描述、地点、联系方式、分类、状态
+### Campus Events
 
-### 🎭 校园活动
+| Feature | Description |
+|---------|-------------|
+| Features | Event calendar, sign-up, reminders |
+| Sync scope | School / College |
+| AI | Personalized event recommendations |
+| Upload points | +8 |
 
-| 特性 | 说明 |
-|------|------|
-| **功能** | 活动日历、报名、提醒 |
-| **同步范围** | 学校 / 学院 |
-| **AI** | 个性化活动推荐 |
-| **上传积分** | +8 |
+Fields: title, description, location, time, sign-up deadline, max attendees, tags.
 
-**字段：** 标题、描述、地点、时间、报名截止、最大人数、标签
+### Campus Bus
 
-### 🚌 校车时刻
+| Feature | Description |
+|---------|-------------|
+| Features | Route query, timetable |
+| Sync scope | School |
 
-| 特性 | 说明 |
-|------|------|
-| **功能** | 线路查询、时刻表 |
-| **同步范围** | 学校 |
+### Announcements
 
-### 📢 公告通知
+| Feature | Description |
+|---------|-------------|
+| Sync scope | Any level |
+| Priority | Normal / Important / Urgent |
 
-| 特性 | 说明 |
-|------|------|
-| **同步范围** | 任意层级 |
-| **优先级** | 普通 / 重要 / 紧急 |
+## Review system
 
-## 餐饮评价系统
+- Star rating (1-5)
+- Text review + image
+- Tags (tasty / good value / fast / generous portion)
+- Average spend tier ($ / $$ / $$$)
 
-- 评分（1-5 星）
-- 文字评论 + 图片
-- 标签（好吃/性价比/速度快/分量足）
-- 人均消费档位（$ / $$ / $$$）
+## API endpoints
 
-## API 端点
-
-| 方法 | 路径 | 说明 |
-|------|------|------|
-| GET | `/api/v1/campus/dining` | 餐饮点列表（支持类型筛选） |
-| GET | `/api/v1/campus/dining/:id` | 餐饮点详情 |
-| POST | `/api/v1/campus/dining` | 上传餐饮点 |
-| POST | `/api/v1/campus/dining/:id/reviews` | 发表评价 |
-| GET | `/api/v1/campus/lost-found` | 失物招领列表 |
-| POST | `/api/v1/campus/lost-found` | 发布失物招领 |
-| GET | `/api/v1/campus/events` | 活动列表 |
-| GET | `/api/v1/campus/announcements` | 公告列表 |
-| GET | `/api/v1/campus/bus` | 校车时刻 |
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | /api/v1/campus/dining | List dining points (type filter supported) |
+| GET | /api/v1/campus/dining/:id | Dining point detail |
+| POST | /api/v1/campus/dining | Upload a dining point |
+| POST | /api/v1/campus/dining/:id/reviews | Post a review |
+| GET | /api/v1/campus/lost-found | List lost & found |
+| POST | /api/v1/campus/lost-found | Publish a lost & found post |
+| GET | /api/v1/campus/events | List events |
+| GET | /api/v1/campus/announcements | List announcements |
+| GET | /api/v1/campus/bus | Campus bus timetable |

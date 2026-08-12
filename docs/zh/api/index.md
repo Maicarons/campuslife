@@ -1,6 +1,6 @@
 # API 参考
 
-基础 URL: `http://localhost:8059/api/v1`
+基础 URL: `http://localhost:8000/api/v1`
 
 ## 认证
 

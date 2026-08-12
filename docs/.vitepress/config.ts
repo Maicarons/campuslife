@@ -39,8 +39,12 @@ export default defineConfig({
                 { text: '📚 学业管理', link: '/zh/modules/academics' },
                 { text: '🍽️ 校园生活', link: '/zh/modules/campus' },
                 { text: '💰 财务管理', link: '/zh/modules/finance' },
+                { text: '🔍 失物招领', link: '/zh/modules/lost-found' },
+                { text: '🛒 二手市场', link: '/zh/modules/marketplace' },
+                { text: '❓ 问答广场', link: '/zh/modules/qa' },
                 { text: '🤝 社交通讯', link: '/zh/modules/social' },
                 { text: '🏃 健康管理', link: '/zh/modules/health' },
+                { text: '🌟 志愿公益', link: '/zh/modules/volunteer' },
                 { text: '🤖 AI 中枢', link: '/zh/modules/ai' },
               ],
             },
@@ -107,7 +111,7 @@ export default defineConfig({
       { text: 'Modules', link: '/modules/academics' },
       { text: 'API', link: '/api/' },
       { text: 'Deploy', link: '/deploy/' },
-      { text: 'GitHub', link: 'https://github.com/campuslife/campuslife' },
+      { text: 'GitHub', link: 'https://github.com/Maicarons/campuslife' },
     ],
 
     sidebar: {
@@ -129,8 +133,12 @@ export default defineConfig({
             { text: '📚 Academics', link: '/modules/academics' },
             { text: '🍽️ Campus Life', link: '/modules/campus' },
             { text: '💰 Finance', link: '/modules/finance' },
+            { text: '🔍 Lost & Found', link: '/modules/lost-found' },
+            { text: '🛒 Marketplace', link: '/modules/marketplace' },
+            { text: '❓ Q&A Plaza', link: '/modules/qa' },
             { text: '🤝 Social', link: '/modules/social' },
             { text: '🏃 Health', link: '/modules/health' },
+            { text: '🌟 Volunteer', link: '/modules/volunteer' },
             { text: '🤖 AI Hub', link: '/modules/ai' },
           ],
         },
@@ -159,7 +167,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/campuslife/campuslife' },
+      { icon: 'github', link: 'https://github.com/Maicarons/campuslife' },
     ],
 
     footer: {

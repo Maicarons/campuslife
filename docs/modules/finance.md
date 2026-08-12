@@ -1,44 +1,38 @@
-# 财务管理
+# Finance
 
-## 概览
+## Overview
 
-帮助学生记录日常收支、了解奖学金机会和兼职信息。
+Helps students record daily income and expenses, and discover scholarship and part-time opportunities.
 
-## 子模块
+## Submodules
 
-### 💳 记账本
+### Expense Tracker
 
-| 特性 | 说明 |
-|------|------|
-| **功能** | 收支记录、分类统计、预算管理 |
-| **AI** | 消费分析 & 省钱建议 |
-| **OCR** | ✅ 小票识别自动记账 |
+| Feature | Description |
+|---------|-------------|
+| Features | Income/expense records, category stats, budget management |
+| AI | Spending analysis and saving suggestions |
+| OCR | Yes - receipt recognition for auto-entry |
 
-**收支分类：** 餐饮 / 交通 / 娱乐 / 学习 / 生活 / 其他
+### Scholarships
 
-**字段：** 类型(income/expense)、金额、分类、描述、日期、OCR 图片
+| Feature | Description |
+|---------|-------------|
+| Sync scope | School / College |
+| AI | Eligibility matching score |
 
-### 🎓 奖学金
+### Part-time Jobs
 
-| 特性 | 说明 |
-|------|------|
-| **同步范围** | 学校 / 学院 |
-| **AI** | 条件匹配度评估 |
+| Feature | Description |
+|---------|-------------|
+| AI | Time-conflict detection |
 
-**字段：** 名称、金额、申请条件(JSON)、截止日期、描述
+## API endpoints
 
-### 💼 兼职信息
-
-| 特性 | 说明 |
-|------|------|
-| **AI** | 时间冲突检测（与课程表对比） |
-
-## API 端点
-
-| 方法 | 路径 | 说明 |
-|------|------|------|
-| GET | `/api/v1/finance/transactions` | 收支记录列表 |
-| POST | `/api/v1/finance/transactions` | 创建收支记录 |
-| DELETE | `/api/v1/finance/transactions/:id` | 删除记录 |
-| GET | `/api/v1/finance/scholarships` | 奖学金列表 |
-| GET | `/api/v1/finance/jobs` | 兼职列表 |
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | /api/v1/finance/transactions | List income/expense records |
+| POST | /api/v1/finance/transactions | Create a record |
+| DELETE | /api/v1/finance/transactions/:id | Delete a record |
+| GET | /api/v1/finance/scholarships | List scholarships |
+| GET | /api/v1/finance/jobs | List part-time jobs |

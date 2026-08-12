@@ -10,7 +10,7 @@
 ### 快速开始
 
 ```bash
-git clone https://github.com/campuslife/campuslife.git
+git clone https://github.com/Maicarons/campuslife.git
 cd campuslife/deploy
 
 # 复制并编辑环境变量

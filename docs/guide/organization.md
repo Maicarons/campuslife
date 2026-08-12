@@ -1,80 +1,80 @@
-# 组织架构
+# Organization
 
-CampusLife 使用五级组织层级管理数据共享和审核流程。
+CampusLife uses a 5-level organization hierarchy to manage data sharing and the review workflow.
 
-## 层级结构
-
-```
-项目管理员 (super_admin)
-    │
-    ▼
-  学校 (school) ← 学校管理员
-    │
-    ▼
-  学院 (college) ← 学院管理员
-    │
-    ▼
-  专业 (major) ← 专业管理员
-    │
-    ▼
-  年级 (grade) ← 年级管理员
-    │
-    ▼
-  班级 (class) ← 班级管理员
-```
-
-## 管理员产生方式
-
-| 方式 | 说明 |
-|------|------|
-| **申请制** | 用户主动申请 → 上一级管理员审批 |
-| **指派制** | 上一级管理员直接指派下级管理员 |
-| **代管** | 某层级无管理员时，上一级管理员代审或设为自动通过 |
-
-## 数据同步范围
-
-| 数据类型 | 可选范围 |
-|---------|---------|
-| 食堂菜单、外卖 | 学校（全校共享） |
-| 校车时刻 | 学校 |
-| 空闲教室 | 学校 / 教学楼 |
-| 校园活动 | 学校 / 学院 |
-| 公告通知 | 学校 / 学院 / 专业 / 年级 / 班级 |
-| 课程信息 | 专业 / 班级 |
-| 考试安排 | 班级 / 专业 / 年级 |
-| 作业信息 | 班级 |
-| 奖学金 | 学校 / 学院 |
-| 失物招领 | 学校 |
-| 笔记 / 论坛 | 不限 |
-
-## 审核流程
+## Hierarchy
 
 ```
-用户上传数据 (选择 scope)
-    │
-    ▼
-匹配 scope 对应层级的管理员
-    │
-    ├── 有管理员 → 等待审核
-    │      ├── 通过 → 数据同步到该范围所有用户 + 发放积分
-    │      └── 驳回 → 通知上传者
-    │
-    └── 无管理员
-           ├── auto_approve=true → 自动通过
-           └── auto_approve=false → 上级代审
+Project Admin (super_admin)
+        |
+        v
+   School (school)  <- school admin
+        |
+        v
+   College (college) <- college admin
+        |
+        v
+   Major (major)    <- major admin
+        |
+        v
+   Grade (grade)    <- grade admin
+        |
+        v
+   Class (class)    <- class admin
 ```
 
-## 积分规则
+## How admins are appointed
 
-| 行为 | 积分 | 说明 |
-|------|------|------|
-| 上传课程信息 | +10 | 审核通过后发放 |
-| 上传考试信息 | +10 | 审核通过后发放 |
-| 上传校园活动 | +8 | 审核通过后发放 |
-| 上传食堂菜单 | +5 | 审核通过后发放 |
-| 上传失物招领 | +5 | 审核通过后发放 |
-| 上传外卖/周边 | +3 | 审核通过后发放 |
-| 上传空闲教室 | +3 | 审核通过后发放 |
-| 提交纠错（被采纳） | +15 | 管理员审核通过 |
-| 完善个人资料 | +20 | 一次性 |
-| 每日签到 | +1 | 每日一次 |
+| Method | Description |
+|--------|-------------|
+| **Application** | A user applies -> the upper-level admin approves. |
+| **Assignment** | The upper-level admin directly assigns a lower-level admin. |
+| **Acting** | When a level has no admin, the upper-level admin reviews on its behalf or enables auto-approval. |
+
+## Data sync scopes
+
+| Data type | Available scope |
+|-----------|-----------------|
+| Cafeteria menu, takeout | School (shared campus-wide) |
+| Campus bus | School |
+| Free classrooms | School / building |
+| Campus events | School / college |
+| Announcements | School / college / major / grade / class |
+| Course info | Major / class |
+| Exams | Class / major / grade |
+| Assignments | Class |
+| Scholarships | School / college |
+| Lost & found | School |
+| Notes / forum | Unlimited |
+
+## Review workflow
+
+```
+User uploads data (chooses a scope)
+        |
+        v
+Match the admin of the chosen scope level
+        |
+        +-- Admin exists -> awaiting review
+        |      +-- Approved -> data syncs to all users in scope + points granted
+        |      +-- Rejected -> notify uploader
+        |
+        +-- No admin
+               +-- auto_approve=true -> auto approved
+               +-- auto_approve=false -> upper level reviews on behalf
+```
+
+## Points rules
+
+| Action | Points | Note |
+|--------|--------|------|
+| Upload course info | +10 | Granted after approval |
+| Upload exam info | +10 | Granted after approval |
+| Upload campus event | +8 | Granted after approval |
+| Upload cafeteria menu | +5 | Granted after approval |
+| Upload lost & found | +5 | Granted after approval |
+| Upload takeout / nearby | +3 | Granted after approval |
+| Upload free classroom | +3 | Granted after approval |
+| Submit correction (accepted) | +15 | After admin review |
+| Complete profile | +20 | One-time |
+| Daily check-in | +1 | Once per day |

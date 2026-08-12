@@ -1,45 +1,30 @@
-# 健康管理
+# Health
 
-## 概览
+## Overview
 
-帮助学生追踪运动、作息和心理健康数据。
+Helps students track exercise, sleep, and mental-health data.
 
-## 子模块
+## Submodules
 
-### 🏃 运动记录
+### Exercise
 
-| 特性 | 说明 |
-|------|------|
-| **功能** | 步数/运动数据记录、目标设定 |
-| **AI** | 个性化运动计划推荐 |
+Log steps / workout data, set goals; AI generates a personalized exercise plan.
 
-**字段：** 运动类型、时长、消耗卡路里、日期、备注
+### Sleep
 
-### 😴 作息管理
+Sleep tracking, reminder alarms; AI offers schedule optimization advice.
 
-| 特性 | 说明 |
-|------|------|
-| **功能** | 睡眠追踪、提醒闹钟 |
-| **AI** | 作息优化建议 |
+### Mental Health
 
-**字段：** 入睡时间、起床时间、睡眠质量（1-5）、备注
+Mood diary, stress assessment; AI emotion analysis and wellness advice.
 
-### 😊 心理健康
+## API endpoints
 
-| 特性 | 说明 |
-|------|------|
-| **功能** | 心情日记、压力评估 |
-| **AI** | 情绪分析 & 健康建议 |
-
-**字段：** 心情等级（1-5）、情绪标签、备注、日期
-
-## API 端点
-
-| 方法 | 路径 | 说明 |
-|------|------|------|
-| GET | `/api/v1/health/exercise` | 运动记录列表 |
-| POST | `/api/v1/health/exercise` | 创建运动记录 |
-| GET | `/api/v1/health/sleep` | 作息记录列表 |
-| POST | `/api/v1/health/sleep` | 创建作息记录 |
-| GET | `/api/v1/health/mood` | 心情记录列表 |
-| POST | `/api/v1/health/mood` | 创建心情记录 |
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | /api/v1/health/exercise | List exercise records |
+| POST | /api/v1/health/exercise | Create an exercise record |
+| GET | /api/v1/health/sleep | List sleep records |
+| POST | /api/v1/health/sleep | Create a sleep record |
+| GET | /api/v1/health/mood | List mood records |
+| POST | /api/v1/health/mood | Create a mood record |

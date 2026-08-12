@@ -13,7 +13,7 @@
 ## 1. 克隆项目
 
 ```bash
-git clone https://github.com/campuslife/campuslife.git
+git clone https://github.com/Maicarons/campuslife.git
 cd campuslife
 ```
 
@@ -39,8 +39,8 @@ cd server
 pip install -e ".[dev]"
 
 # 启动 FastAPI
-uvicorn app.main:app --reload --port 8059
-# → http://localhost:8059/docs (Swagger UI)
+uvicorn app.main:app --reload --port 8000
+# → http://localhost:8000/docs (Swagger UI)
 ```
 
 ## 5. 配置前端 API 地址
@@ -48,13 +48,13 @@ uvicorn app.main:app --reload --port 8059
 前端默认连接 `http://localhost:8000/api/v1`。如后端端口不同，通过环境变量指定：
 
 ```bash
-VITE_API_URL=http://localhost:8059/api/v1 npm run dev
+VITE_API_URL=http://localhost:8000/api/v1 npm run dev
 ```
 
 或创建 `.env` 文件：
 
 ```
-VITE_API_URL=http://localhost:8059/api/v1
+VITE_API_URL=http://localhost:8000/api/v1
 ```
 
 ## 常用命令

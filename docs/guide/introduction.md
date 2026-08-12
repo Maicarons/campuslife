@@ -1,38 +1,34 @@
-# 项目介绍
+# Introduction
 
-**CampusLife** 是一款面向大学生的校园生活一站式工作站，覆盖学业管理、校园生活、财务管理、社交通讯、健康管理和 AI 中枢 6 大功能模块。
+**CampusLife** is an all-in-one campus life workstation for university students, spanning **10 functional modules**: AI Assistant, Academics, Campus Life, Finance, Lost & Found, Marketplace, Q&A Plaza, Social, Health, and Volunteer.
 
-## 为什么做 CampusLife
+## Why CampusLife
 
-大学生活中，信息分散在不同平台：课程表在教务系统、食堂菜单在公告栏、记账用 Excel、活动信息在微信群。CampusLife 将这些整合到一个平台，配合 AI 能力，让学生更高效地管理校园生活。
+In student life, information is scattered across many platforms: course schedules live in the academic system, cafeteria menus on bulletin boards, expense tracking in Excel, and event info in WeChat groups. CampusLife brings all of this into one place, supercharged with AI, so students can manage campus life far more efficiently.
 
-## 核心特色
+## Core Highlights
 
-- **组织架构同步** — 基于 学校→学院→专业→年级→班级 的五级架构，数据按范围共享和审核
-- **AI 深度集成** — 每个模块都内嵌 AI 能力（智能排课、营养分析、消费建议等）
-- **离线优先** — DuckDB-WASM 本地存储，离线可读写，联网自动同步
-- **多端支持** — Web、Tauri 桌面端、Capacitor Android 移动端
-- **OCR 识别** — 拍照导入课程表、成绩单、小票等
-- **积分激励** — 上传共享数据赚积分，提升社区活跃度
+- **Organization-aware sync** - A 5-level hierarchy (School -> College -> Major -> Grade -> Class) drives scope-based data sharing and admin review.
+- **AI in every module** - Smart scheduling, nutrition analysis, spending insights, and more.
+- **Offline-first** - Local storage with read/write offline and automatic sync when online.
+- **Multi-platform** - Web, Tauri desktop, and Capacitor Android.
+- **OCR** - Snap photos to import schedules, transcripts, and receipts.
+- **Points system** - Earn points by contributing shared data, boosting community activity.
 
-## 技术架构概览
+## Tech Stack at a Glance
 
 ```
-┌────────────────────────────────────────────┐
-│           客户端 (Vue 3 + Element Plus)      │
-│  Web / Tauri Desktop / Capacitor Android    │
-└──────────────────┬─────────────────────────┘
-                   │ HTTP / WebSocket
-┌──────────────────▼─────────────────────────┐
-│        FastAPI 后端 (server/)                │
-│  Auth · API · WebSocket · AI Proxy          │
-└──────────────────┬─────────────────────────┘
-                   │
-┌──────────────────▼─────────────────────────┐
-│     数据层 (SQLite/MySQL + uploads/)        │
-└────────────────────────────────────────────┘
+Client (Vue 3 + Element Plus)
+  Web / Tauri Desktop / Capacitor Android
+        |  HTTP / WebSocket
+        v
+FastAPI Backend (server/)
+  Auth - API - WebSocket - AI Proxy
+        |
+        v
+Data Layer (SQLite / MySQL + uploads/)
 ```
 
-## 开源协议
+## License
 
 [AGPL-3.0](LICENSE)
